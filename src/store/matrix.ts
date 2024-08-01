@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { create2DArray } from '../components/utils/globalFunction.ts';
+import { create2DArray } from '../utils/globalFunction.ts';
 
 const initialState = {
   matrix: create2DArray(10, 20)
