@@ -1,23 +1,26 @@
 import './index.scss'
+import { useCustomSelector } from '../../hooks/useStore.ts';
+import { MatrixData } from '../../utils/constant.ts';
+import { Block } from '../../utils/block.ts';
 
 export default function Content() {
+  const matrix = useCustomSelector(state => state.matrix)
+  const ysj = new Block(0, 0)
+  ysj.rotate()
   return (
     <div className="content">
-      {getContent()}
+      {getContent(matrix.data)}
     </div>
   )
 }
 
-function getContent() {
-  const matrix = new Array(20 * 10)
-  matrix.fill(0)
-  console.log(matrix)
+function getContent(matrix: MatrixData[][]) {
   const cells = []
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < matrix.length; i++) {
     const row = []
-    for (let j = 0; j < 20; j++) {
+    for (let j = 0; j < matrix[i].length; j++) {
       row.push(
-        <div key={i + j} className="cell">
+        <div key={i + j} className={'cell ' + (matrix[i][j] === 1 ? 'full-cell' : '')}>
           <div className="cell-content"></div>
         </div>
       )

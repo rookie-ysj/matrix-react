@@ -1,1 +1,4 @@
-export const SHAPES = {}
+export const enum MatrixData {
+  EMPTY,
+  FULL,
+}

@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import matrix from './matrix.ts';
 
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    matrix
+  }
 })
 
 export default store

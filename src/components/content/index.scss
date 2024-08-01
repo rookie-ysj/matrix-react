@@ -1,3 +1,6 @@
+$default-color: #ccc;
+$full-color: #000;
+
 .content {
   height: 500px;
 
@@ -5,16 +8,23 @@
     display: flex;
 
     .cell {
-      width: 25px;
-      height: 25px;
-      border: 1px solid #ccc;
+      width: 21px;
+      height: 21px;
+      border: 1px solid $default-color;
       padding: 2px;
+      margin: 2px;
       box-sizing: border-box;
 
       .cell-content {
-        background: #ccc;
-        height: 19px;
-        width: 19px;
+        background: $default-color;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .full-cell {
+      border-color: $full-color;
+      .cell-content {
+        background-color: $full-color;
       }
     }
   }
