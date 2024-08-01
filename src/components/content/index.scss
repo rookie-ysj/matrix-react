@@ -1,0 +1,22 @@
+.content {
+  height: 500px;
+
+  .row {
+    display: flex;
+
+    .cell {
+      width: 25px;
+      height: 25px;
+      border: 1px solid #ccc;
+      padding: 2px;
+      box-sizing: border-box;
+
+      .cell-content {
+        background: #ccc;
+        height: 19px;
+        width: 19px;
+      }
+    }
+  }
+
+}
