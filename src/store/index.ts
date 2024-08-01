@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import matrix from './matrix.ts';
+import currentBlock from './currentBlock.ts';
 
 const store = configureStore({
   reducer: {
-    matrix
+    matrix,
+    currentBlock
   }
 })
 

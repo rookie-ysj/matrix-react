@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { create2DArray } from '../utils/globalFunction.ts';
-import { MatrixData } from '../utils/constant.ts';
+import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from '../utils/constant.ts';
 
 const initialState = {
-  data: create2DArray<MatrixData>(10, 20)
+  data: create2DArray<MatrixData>(MAX_COLUMN_SIZE, MAX_ROW_SIZE)
 }
 const matrix = createSlice({
   name: 'matrix',

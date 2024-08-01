@@ -1,4 +1,4 @@
-import { MatrixData } from './constant.ts';
+import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from './constant.ts';
 
 type Shape = MatrixData[][]
 export const shapes: Shape[] = [
@@ -40,17 +40,28 @@ export class Block {
 
   public rotate() {
     // todo
+    console.log(this.x, this.y)
   }
 
-  public fall() {
-    this.y = this.y + 1
+  public canFail(): boolean {
+    return this.y + this.shape.length < MAX_ROW_SIZE;
+  }
+
+  public fall(): number {
+    return this.y + 1
   }
 
   public left() {
+    if (this.x === 0) {
+      return
+    }
     this.x = this.x - 1
   }
 
   public right() {
+    if (this.x === MAX_COLUMN_SIZE) {
+      return
+    }
     this.x = this.x + 1
   }
 }
