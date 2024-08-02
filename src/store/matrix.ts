@@ -10,6 +10,7 @@ const matrix = createSlice({
   initialState: initialState,
   reducers: {
     setMatrix: (state, action: PayloadAction<MatrixData[][]>) => {
+      console.log(action.payload)
       state.data = action.payload
     }
   }

@@ -2,26 +2,36 @@ import './index.scss'
 import { useCustomDispatch, useCustomSelector } from '../../hooks/useStore.ts';
 import { MatrixData } from '../../utils/constant.ts';
 import { Block } from '../../utils/block.ts';
-import { mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
-import React from 'react';
+import { gameOver, mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
+import React, { useEffect, useState } from 'react';
 import { resetCurBlock, setCurBlockShape, setCurBlockY } from '../../store/currentBlock.ts';
 import { setMatrix } from '../../store/matrix.ts';
+import { setTimer } from "../../store/timer.ts";
 
 export default function Content() {
   const matrix = useCustomSelector(state => state.matrix)
   const curBlock = useCustomSelector(state => state.currentBlock)
   const dispatch = useCustomDispatch();
-  // setInterval(() => {
-  //   if (curBlock.block.canFail()) {
-  //     dispatch(setCurBlockY(curBlock.block.fall()))
-  //   } else {
-  //     console.log(curBlock.block)
-  //     console.log(mergeMatrixAndBlock(matrix.data, curBlock.block))
-  //     dispatch(setMatrix(mergeMatrixAndBlock(matrix.data, curBlock.block)))
-  //     dispatch(resetCurBlock())
-  //   }
-  //   console.log(curBlock.block)
-  // }, 1000)
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (curBlock.block.canFail(matrix.data)) {
+        dispatch(setCurBlockY(curBlock.block.fall()))
+        setCount(count => count + 1)
+      } else {
+        dispatch(setMatrix(mergeMatrixAndBlock(matrix.data, curBlock.block)))
+        dispatch(resetCurBlock())
+        if (gameOver(matrix.data)) {
+          console.log('/ff')
+        }
+        else {
+          setCount(count => count + 1)
+        }
+      }
+    }, 100)
+    console.log(curBlock.block)
+    dispatch(setTimer(t))
+  }, [count]);
   return (
     <div className="content">
       {getContent(matrix.data, curBlock.block)}

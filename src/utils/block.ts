@@ -1,11 +1,11 @@
-import { MAX_COLUMN_SIZE, MAX_ROW_SIZE } from './constant.ts';
+import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from './constant.ts';
 import { type Shape, shapes } from "./shape.ts";
 
 export class Block {
   public shape: Shape
 
   constructor(public x: number, public y: number) {
-    this.shape = shapes[Math.floor(Math.random() * shapes.length)];
+    this.shape = shapes[3];
   }
 
   public rotate(): Shape {
@@ -44,15 +44,27 @@ export class Block {
     return matrix.map(row => row.slice().reverse());
   }
 
-  public canFail(): boolean {
-    return this.y + this.shape.length < MAX_ROW_SIZE;
+  public canFail(matrix: MatrixData[][]): boolean {
+    if (this.y + this.shape.length >= MAX_ROW_SIZE) {
+      return false;
+    }
+    if (!matrix) {
+      return false;
+    }
+    for (let r = 0; r < this.shape.length; r++) {
+      for (let c = 0; c < this.shape[0].length; c++) {
+        if (this.shape[r][c] === MatrixData.FULL) {
+          if (matrix[this.y + r + 1][this.x + c] === MatrixData.FULL) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 
   public fall(): number {
-    if (this.canFail()) {
-      return this.y + 1
-    }
-    return this.y
+    return this.y + 1
   }
 
   public left() {

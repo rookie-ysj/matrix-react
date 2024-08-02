@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import matrix from './matrix.ts';
 import currentBlock from './currentBlock.ts';
+import timer from "./timer.ts";
 
 const store = configureStore({
   reducer: {
     matrix,
-    currentBlock
+    currentBlock,
+    timer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({serializableCheck: false})

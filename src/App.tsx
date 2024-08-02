@@ -4,7 +4,7 @@ import Content from './components/content/content.tsx';
 
 function App() {
   return (
-    <div className="tetris">
+    <div className="tetris"  style={{display: 'none'}}>
       <Content/>
       <Operate/>
     </div>

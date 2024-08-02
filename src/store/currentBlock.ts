@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Block } from '../utils/block.ts';
 import { MatrixData } from '../utils/constant.ts';
+import { shapes } from "../utils/shape.ts";
 
 type InitialState = {
   block: Block
@@ -24,8 +25,9 @@ const currentBlock = createSlice({
       state.block.shape = action.payload;
     },
     resetCurBlock: (state) => {
-      state.block.x = 0
+      state.block.x = 3
       state.block.y = 0
+      state.block.shape = shapes[3];
     }
   }
 })
