@@ -24,7 +24,8 @@ const currentBlock = createSlice({
       state.block.shape = action.payload;
     },
     resetCurBlock: (state) => {
-      state.block = new Block(3, 0);
+      state.block.x = 0
+      state.block.y = 0
     }
   }
 })

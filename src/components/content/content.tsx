@@ -4,25 +4,24 @@ import { MatrixData } from '../../utils/constant.ts';
 import { Block } from '../../utils/block.ts';
 import { mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
 import React from 'react';
-import { resetCurBlock, setCurBlockY } from '../../store/currentBlock.ts';
+import { resetCurBlock, setCurBlockShape, setCurBlockY } from '../../store/currentBlock.ts';
 import { setMatrix } from '../../store/matrix.ts';
 
 export default function Content() {
   const matrix = useCustomSelector(state => state.matrix)
   const curBlock = useCustomSelector(state => state.currentBlock)
   const dispatch = useCustomDispatch();
-  const [count, setCount] = React.useState(0);
-  setTimeout(() => {
-    if (curBlock.block.canFail()) {
-      dispatch(setCurBlockY(curBlock.block.fall()))
-    } else {
-      console.log(curBlock.block)
-      console.log(mergeMatrixAndBlock(matrix.data, curBlock.block))
-      dispatch(setMatrix(mergeMatrixAndBlock(matrix.data, curBlock.block)))
-      dispatch(resetCurBlock())
-    }
-    setCount(count => count + 1)
-  }, 1000)
+  // setInterval(() => {
+  //   if (curBlock.block.canFail()) {
+  //     dispatch(setCurBlockY(curBlock.block.fall()))
+  //   } else {
+  //     console.log(curBlock.block)
+  //     console.log(mergeMatrixAndBlock(matrix.data, curBlock.block))
+  //     dispatch(setMatrix(mergeMatrixAndBlock(matrix.data, curBlock.block)))
+  //     dispatch(resetCurBlock())
+  //   }
+  //   console.log(curBlock.block)
+  // }, 1000)
   return (
     <div className="content">
       {getContent(matrix.data, curBlock.block)}
