@@ -4,7 +4,7 @@ import { MatrixData } from '../../utils/constant.ts';
 import { Block } from '../../utils/block.ts';
 import { gameOver, mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
 import React, { useEffect, useState } from 'react';
-import { resetCurBlock, setCurBlockShape, setCurBlockY } from '../../store/currentBlock.ts';
+import { resetCurBlock, setCurBlockY } from '../../store/currentBlock.ts';
 import { setMatrix } from '../../store/matrix.ts';
 import { setTimer } from "../../store/timer.ts";
 
@@ -22,9 +22,8 @@ export default function Content() {
         dispatch(setMatrix(mergeMatrixAndBlock(matrix.data, curBlock.block)))
         dispatch(resetCurBlock())
         if (gameOver(matrix.data)) {
-          console.log('/ff')
-        }
-        else {
+          alert('game over!')
+        } else {
           setCount(count => count + 1)
         }
       }

@@ -5,7 +5,7 @@ export class Block {
   public shape: Shape
 
   constructor(public x: number, public y: number) {
-    this.shape = shapes[3];
+    this.shape = shapes[Math.floor(Math.random() * shapes.length)];
   }
 
   public rotate(): Shape {
@@ -26,6 +26,7 @@ export class Block {
     // 更新方块形状
     return newShape;
   }
+
   // 转置矩阵
   private transpose(matrix: Shape) {
     const result = [];

@@ -27,7 +27,7 @@ const currentBlock = createSlice({
     resetCurBlock: (state) => {
       state.block.x = 3
       state.block.y = 0
-      state.block.shape = shapes[3];
+      state.block.shape = shapes[Math.floor(Math.random() * shapes.length)];
     }
   }
 })
