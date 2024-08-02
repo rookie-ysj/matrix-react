@@ -6,7 +6,10 @@ const store = configureStore({
   reducer: {
     matrix,
     currentBlock
-  }
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({serializableCheck: false})
+  },
 })
 
 export default store
