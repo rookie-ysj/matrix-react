@@ -14,7 +14,7 @@ export default function Operate() {
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       keyDownWithData(e.key)
     });
-  }, []);
+  });
   return (
     <div className='operate'>
       <button onClick={() => keyDownWithData(KeyBoardOperation.LEFT)}>左边</button>

@@ -1,7 +1,7 @@
 import './index.scss'
 import { useCustomDispatch, useCustomSelector } from '../../hooks/useStore.ts';
 import { MatrixData } from '../../utils/constant.ts';
-import { Block } from '../../utils/block.ts';
+import { Block } from '../../unit/block.ts';
 import { gameOver, mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
 import { useEffect, useState } from 'react';
 import { resetCurBlock, setCurBlockY } from '../../store/currentBlock.ts';

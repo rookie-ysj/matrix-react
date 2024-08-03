@@ -1,5 +1,5 @@
 import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from './constant.ts';
-import { Block } from './block.ts';
+import { Block } from '../unit/block.ts';
 
 export function create2DArray<T extends number>(width: number, height: number): T[][] {
   const arr = new Array(height);

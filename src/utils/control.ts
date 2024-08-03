@@ -1,4 +1,4 @@
-import { Block } from './block.ts';
+import { Block } from '../unit/block.ts';
 
 export enum KeyBoardOperation {
   LEFT = 'ArrowLeft',

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Block } from '../utils/block.ts';
+import { Block } from '../unit/block.ts';
 import { MatrixData } from '../utils/constant.ts';
 import { shapes } from "../utils/shape.ts";
 

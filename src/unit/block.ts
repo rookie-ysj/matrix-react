@@ -1,5 +1,5 @@
-import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from './constant.ts';
-import { type Shape, shapes } from "./shape.ts";
+import { MatrixData, MAX_COLUMN_SIZE, MAX_ROW_SIZE } from '../utils/constant.ts';
+import { type Shape, shapes } from "../utils/shape.ts";
 
 export class Block {
   public shape: Shape
