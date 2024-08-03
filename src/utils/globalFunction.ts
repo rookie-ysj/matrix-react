@@ -32,7 +32,7 @@ export function mergeMatrixAndBlock(matrix: MatrixData[][], block: Block): Matri
       }
     }
   }
-  return result
+  return clearLine(result)
 }
 
 export function gameOver(matrix: MatrixData[][]): boolean {
@@ -42,4 +42,22 @@ export function gameOver(matrix: MatrixData[][]): boolean {
     }
   }
   return false
+}
+
+export function clearLine(matrix: MatrixData[][]) {
+  const result = []
+  for (let r = 0; r < matrix.length; r++) {
+    let clear = true
+    for (let c = 0; c < matrix[0].length; c++) {
+      if (matrix[r][c] === MatrixData.EMPTY) {
+        clear = false
+      }
+    }
+    if (!clear) {
+      result.push([...matrix[r]])
+    } else {
+      result.unshift((new Array(matrix[0].length)).fill(0))
+    }
+  }
+  return result
 }

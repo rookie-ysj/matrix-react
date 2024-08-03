@@ -23,6 +23,7 @@ export class Block {
         }
       }
     }
+    this.shape = newShape;
     // 更新方块形状
     return newShape;
   }
@@ -76,9 +77,16 @@ export class Block {
   }
 
   public right() {
-    if (this.x === MAX_COLUMN_SIZE) {
+    if (this.x + this.shape[0].length >= MAX_COLUMN_SIZE) {
       return
     }
     this.x = this.x + 1
+  }
+
+  public down(matrix: MatrixData[][]) {
+    while (this.canFail(matrix)) {
+      this.fall()
+    }
+    return
   }
 }

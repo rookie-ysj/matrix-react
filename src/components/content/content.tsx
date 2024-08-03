@@ -3,7 +3,7 @@ import { useCustomDispatch, useCustomSelector } from '../../hooks/useStore.ts';
 import { MatrixData } from '../../utils/constant.ts';
 import { Block } from '../../utils/block.ts';
 import { gameOver, mergeMatrixAndBlock } from '../../utils/globalFunction.ts';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { resetCurBlock, setCurBlockY } from '../../store/currentBlock.ts';
 import { setMatrix } from '../../store/matrix.ts';
 import { setTimer } from "../../store/timer.ts";
@@ -28,7 +28,6 @@ export default function Content() {
         }
       }
     }, 100)
-    console.log(curBlock.block)
     dispatch(setTimer(t))
   }, [count]);
   return (
@@ -45,7 +44,7 @@ function getContent(matrix: MatrixData[][], block: Block) {
     const row = []
     for (let j = 0; j < result[i].length; j++) {
       row.push(
-        <div key={i + j} className={'cell ' + (result[i][j] === 1 ? 'full-cell' : '')}>
+        <div key={i + j} className={'cell ' + (result[i][j] === MatrixData.FULL ? 'full-cell' : '')}>
           <div className="cell-content"></div>
         </div>
       )
